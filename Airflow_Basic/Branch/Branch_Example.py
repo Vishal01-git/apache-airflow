@@ -10,6 +10,9 @@ def notification_email(**kwargs):
         return 'send_email_task'
     else:
         return 'dummy_task'
+
+def always_true():
+    return True
     
 
         
@@ -29,7 +32,7 @@ start_task = DummyOperator(task_id='start_task', dag=dag)
 
 check_data = PythonOperator(
     task_id='check_data',
-    python_callable=lambda: True,
+    python_callable=always_true,
     dag=dag,
 )
 
