@@ -1,13 +1,13 @@
 from airflow import DAG
 from airflow.operators.dummy import DummyOperator
-from airflow.operators.python import PythonOperator
-from airflow.operators.email import EmailOperator
+from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.utils.dates import days_ago
+from airflow.utils.trigger_rule import TriggerRule
 
 
 def notification_email(**kwargs):
     if kwargs['ti'].xcom_pull(task_ids='check_data'):
-        return 'send_email_task'
+        return 'dummy_task_true'
     else:
         return 'dummy_task'
 
@@ -36,23 +36,21 @@ check_data = PythonOperator(
     dag=dag,
 )
 
-branch_task = PythonOperator(
+# Updated to use BranchPythonOperator
+branch_task = BranchPythonOperator(
     task_id='branch_task',
     python_callable=notification_email,
     provide_context=True,
     dag=dag,
 )
 
-send_email_task = EmailOperator(
-    task_id='send_email_task',
-    to ='example@example.com',
-    subject='Airflow Alert',
-    html_content=""" <h3>Email Test</h3> """,
-    dag=dag,
-)
+
+dummy_task_true = DummyOperator(task_id='dummy_task_true', dag=dag)
 
 dummy_task = DummyOperator(task_id='dummy_task', dag=dag)
 
-start_task >> check_data >> branch_task >> [send_email_task, dummy_task]
+dummy_task_final = DummyOperator(task_id='dummy_task_final', trigger_rule=TriggerRule.ONE_SUCCESS, dag=dag)
+
+start_task >> check_data >> branch_task >> [dummy_task_true, dummy_task]>>dummy_task_final 
 
 
