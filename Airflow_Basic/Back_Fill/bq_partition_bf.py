@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.dummy import DummyOperator
-from airflow.contrib.operators.bigquery_operator import BigQueryOperator
+from airflow.providers.google.cloud.operators.bigquery import BigQueryExecuteQueryOperator
 
 
 default_args = {
