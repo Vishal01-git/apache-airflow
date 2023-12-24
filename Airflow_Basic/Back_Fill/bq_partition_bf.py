@@ -15,15 +15,20 @@ dag = DAG{
     schedule_interval=None,
 }
 
+project = 'your_project'
+dataset = 'test_table'
+des_table = 'stock_price_des_'
+table_date = '{{ ds }}'
+
 
 start_task = DummyOperator(task_id='start_task', dag=dag)
 
 
-bq_query_task = BigQueryOperator(
+bq_query_task = BigQueryExecuteQueryOperator(
     task_id='run_bq_query',
     sql='SELECT * FROM your_dataset.your_table WHERE date_field = {{ ds }}',
     use_legacy_sql=False,
-    destination_dataset_table='your_dataset.destination_table',
+    destination_dataset_table=f"{project}.{dataset}.{des_table}{table_date}",
     write_disposition='WRITE_TRUNCATE',
     create_disposition='CREATE_IF_NEEDED',
     dag=dag,
