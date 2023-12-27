@@ -17,7 +17,7 @@ dag = DAG(
     
 )
 
-project = 'friendly-plane-294914'
+project = 'PROJECT'
 dataset = 'test_table'
 des_table = 'stock_price_des_'
 table_date = str('{{ ds }}').replace("-", "")
@@ -29,7 +29,7 @@ start_task = DummyOperator(task_id='start_task', dag=dag)
 
 bq_query_task = BigQueryExecuteQueryOperator(
     task_id='run_bq_query',
-    sql="""SELECT * FROM `friendly-plane-294914.test_table.stock_price_data` where Date = CAST('{{ ds }}' AS DATE) """,
+    sql="""SELECT * FROM `PROJECT.test_table.stock_price_data` where Date = CAST('{{ ds }}' AS DATE) """,
     use_legacy_sql=False,
     destination_dataset_table=f"{project}.{dataset}.{des_table}{table_date}",
     write_disposition='WRITE_TRUNCATE',
