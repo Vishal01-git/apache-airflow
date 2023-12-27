@@ -5,19 +5,22 @@ from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'airflow',
-    'start_date': datetime(2023, 12, 1),
+    'start_date': datetime(2023, 12, 24),
+    'catchup':False,
+    'retries': 0,
 }
 
 dag = DAG(
     'Back_Fill',
     default_args=default_args,
     schedule_interval='@daily',
+    
 )
 
-project = 'project'
+project = 'PROJECT'
 dataset = 'test_table'
 des_table = 'stock_price_des_'
-table_date = '{{ ds }}'
+table_date = str('{{ ds }}')
 
 
 start_task = DummyOperator(task_id='start_task', dag=dag)
@@ -25,7 +28,7 @@ start_task = DummyOperator(task_id='start_task', dag=dag)
 
 bq_query_task = BigQueryExecuteQueryOperator(
     task_id='run_bq_query',
-    sql='SELECT * FROM `project.test_table.stock_price_data` where Date = {{ ds }}',
+    sql="""SELECT * FROM `PROJECT.test_table.stock_price_data` where Date = CAST('{{ ds }}' AS DATE) """,
     use_legacy_sql=False,
     destination_dataset_table=f"{project}.{dataset}.{des_table}{table_date}",
     write_disposition='WRITE_TRUNCATE',
