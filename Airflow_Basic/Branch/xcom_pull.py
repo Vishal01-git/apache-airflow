@@ -30,7 +30,7 @@ def pull_function(**kwargs):
     emp_name = kwargs['ti'].xcom_pull(task_ids='push_task')
     print(emp_name)
 
-pull_task = PythonOperator(
+pull_task = BranchPythonOperator(
     task_id='pull_task',
     python_callable=pull_function,
     dag=dag)
