@@ -11,3 +11,7 @@ python3 -m venv venv
 source venv/bin/activate
 <br>
 https://airflow.apache.org/docs/apache-airflow/stable/start.html
+<br>
+test
+<br>
+https://raw.githubusercontent.com/apache/airflow/constraints-2.9.1/constraints-3.11.txt
