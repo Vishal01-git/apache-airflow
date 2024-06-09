@@ -15,3 +15,5 @@ https://airflow.apache.org/docs/apache-airflow/stable/start.html
 test
 <br>
 https://raw.githubusercontent.com/apache/airflow/constraints-2.9.1/constraints-3.11.txt
+<br>
+airflow standalone
