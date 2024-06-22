@@ -17,3 +17,5 @@ test
 https://raw.githubusercontent.com/apache/airflow/constraints-2.9.1/constraints-3.11.txt
 <br>
 airflow standalone
+<br>
+pip install apache-airflow-providers-google
