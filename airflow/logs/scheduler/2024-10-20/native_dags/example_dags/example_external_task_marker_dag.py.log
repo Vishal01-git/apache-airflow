@@ -62,3 +62,11 @@
 [2024-10-20T05:49:48.879+0000] {logging_mixin.py:190} INFO - [2024-10-20T05:49:48.879+0000] {dag.py:4180} INFO - Setting next_dagrun for example_external_task_marker_child to None, run_after=None
 [2024-10-20T05:49:48.882+0000] {logging_mixin.py:190} INFO - [2024-10-20T05:49:48.882+0000] {dag.py:4180} INFO - Setting next_dagrun for example_external_task_marker_parent to None, run_after=None
 [2024-10-20T05:49:48.933+0000] {processor.py:208} INFO - Processing /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_external_task_marker_dag.py took 0.094 seconds
+[2024-10-20T05:50:49.488+0000] {processor.py:186} INFO - Started process (PID=13491) to work on /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_external_task_marker_dag.py
+[2024-10-20T05:50:49.489+0000] {processor.py:914} INFO - Processing file /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_external_task_marker_dag.py for tasks to queue
+[2024-10-20T05:50:49.490+0000] {logging_mixin.py:190} INFO - [2024-10-20T05:50:49.490+0000] {dagbag.py:588} INFO - Filling up the DagBag from /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_external_task_marker_dag.py
+[2024-10-20T05:50:49.496+0000] {processor.py:925} INFO - DAG(s) 'example_external_task_marker_parent', 'example_external_task_marker_child' retrieved from /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_external_task_marker_dag.py
+[2024-10-20T05:50:49.509+0000] {logging_mixin.py:190} INFO - [2024-10-20T05:50:49.509+0000] {dag.py:3239} INFO - Sync 2 DAGs
+[2024-10-20T05:50:49.518+0000] {logging_mixin.py:190} INFO - [2024-10-20T05:50:49.518+0000] {dag.py:4180} INFO - Setting next_dagrun for example_external_task_marker_child to None, run_after=None
+[2024-10-20T05:50:49.521+0000] {logging_mixin.py:190} INFO - [2024-10-20T05:50:49.521+0000] {dag.py:4180} INFO - Setting next_dagrun for example_external_task_marker_parent to None, run_after=None
+[2024-10-20T05:50:49.630+0000] {processor.py:208} INFO - Processing /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_external_task_marker_dag.py took 0.146 seconds

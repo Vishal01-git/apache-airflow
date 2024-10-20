@@ -950,3 +950,4 @@ File Path                                                                       
 /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/example_passing_params_via_test_command.py                                           1           0  0.10s           2024-10-20T05:50:17                      12
 /usr/local/python/3.12.1/lib/python3.12/site-packages/airflow/example_dags/subdags/subdag.py                                                                    0           0  0.10s           2024-10-20T05:49:54                       3
 ================================================================================
+[2024-10-20T05:50:55.375+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
