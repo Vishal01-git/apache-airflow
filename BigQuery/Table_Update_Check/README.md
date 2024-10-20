@@ -1,1 +1,0 @@
-## Airflow check Bigquery Table update
